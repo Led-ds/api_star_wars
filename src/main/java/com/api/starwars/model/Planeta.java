@@ -2,28 +2,37 @@ package com.api.starwars.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @SuppressWarnings("serial")
-@Entity
-@Table(name = "planeta")
+@Document(collection = "planeta")
 public class Planeta implements Serializable{
 
-	private ObjectId id;
+	@Id
+	private String id;
 	private String nome;
 	private String clima;
 	private String terreno;
 	private Integer qtdAparicao;
-	
-	public ObjectId getId() {
-        return id;
-    } 
-    public void setId(ObjectId id) {
-        this.id = id;
-    }    
+
+	public Planeta(){}
+
+	public Planeta(String prNome, String prClima, String prTerreno, Integer prQtdAparicao){
+		this.nome = prNome;
+		this.clima = prClima;
+		this.terreno = prTerreno;
+		this.qtdAparicao = prQtdAparicao;
+	}
+
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -47,5 +56,15 @@ public class Planeta implements Serializable{
 	}
 	public void setQtdAparicao(Integer qtdAparicao) {
 		this.qtdAparicao = qtdAparicao;
+	}
+
+	@Override
+	public String toString() {
+		return "Planeta{" +
+				"nome='" + nome + '\'' +
+				", clima='" + clima + '\'' +
+				", terreno='" + terreno + '\'' +
+				", qtdAparicao=" + qtdAparicao +
+				'}';
 	}
 }

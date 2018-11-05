@@ -43,18 +43,21 @@ public class PlanetaController {
     }
 	
 	@RequestMapping(method=RequestMethod.GET, value="/buscarPlaneta/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Planeta> buscarPorId(@PathVariable ObjectId id){
-		Planeta target = service.getPlantePorId(id);		
+	public ResponseEntity<Planeta> buscarPorId(@PathVariable String id){
+
+		Planeta target = service.getPlantePorId(id);
 		
 		if(target==null){
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+
 		return new ResponseEntity<Planeta>(target, HttpStatus.OK);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/buscarPlaneta/{nome}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Planeta> buscarPorId(@PathVariable String nome){
-		Planeta target = service.getPlantePorNome(nome);		
+	public ResponseEntity<Planeta> buscarPorNome(@PathVariable String nome){
+
+		Planeta target = service.getPlantePorNome(nome);
 		
 		if(target==null){
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

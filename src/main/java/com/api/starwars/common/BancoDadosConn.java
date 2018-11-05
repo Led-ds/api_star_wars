@@ -10,7 +10,7 @@ public class BancoDadosConn {
 
 	private static final String HOST = "localhost";
     private static final int PORT = 27017;
-    private static final String DB_NAME = "darth-vader";
+    private static final String DB_NAME = "darthvader";
     private static BancoDadosConn conn;
     private MongoClient mongo;
     private Datastore datastore;

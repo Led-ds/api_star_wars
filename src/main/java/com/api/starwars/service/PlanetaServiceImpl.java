@@ -1,51 +1,46 @@
 package com.api.starwars.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.api.starwars.model.Planeta;
 import com.api.starwars.repository.PlanetaRepository;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+@Service("planetaService")
+@Transactional
 public class PlanetaServiceImpl implements PlanetaService {
 
-	private PlanetaRepository repository;
-	
 	@Autowired
-	public PlanetaServiceImpl(PlanetaRepository prPlanetaRepository){
-		this.repository = prPlanetaRepository;
-	}
+	private PlanetaRepository repository;
+
 	
-	
-	@Override
 	public Planeta adicionar(Planeta planeta) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.insert(planeta);
 	}
 
-	@Override
 	public List<Planeta> listarTodosPlanetas() {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 
-	@Override
-	public Planeta getPlantePorId(ObjectId id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Planeta getPlantePorId(String id) {
+		Optional optional = repository.findById(id);
+		return (Planeta) optional.get();
 	}
 
 	@Override
 	public Planeta getPlantePorNome(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Planeta) repository.findByIdName(nome);
 	}
 
 	@Override
-	public void deletar(ObjectId id) {
-		// TODO Auto-generated method stub
-		
+	public void deletar(Planeta planeta) {
+		repository.delete(planeta);
 	}
 
 }

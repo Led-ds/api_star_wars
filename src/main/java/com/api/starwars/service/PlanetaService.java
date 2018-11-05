@@ -12,9 +12,9 @@ public interface PlanetaService {
 	
 	public List<Planeta> listarTodosPlanetas();
 	
-    public Planeta getPlantePorId(ObjectId id);
+    public Planeta getPlantePorId(String id);
     
     public Planeta getPlantePorNome(String nome);
     
-    public void deletar(ObjectId id);
+    public void deletar(Planeta planeta);
 }

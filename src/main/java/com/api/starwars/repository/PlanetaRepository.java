@@ -5,16 +5,13 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 import com.api.starwars.model.Planeta;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+import org.springframework.stereotype.Repository;
 
-public interface PlanetaRepository<T> {
+@Repository
+public interface PlanetaRepository extends MongoRepository<Planeta, String> {
 
-	T add(T log);
-	
-	T get(ObjectId id);  
-	
-	T get(String nome);
-	
-	List<T> getAll();
-	
-	void delete(ObjectId id);
+    @Query("{ 'nome' : ?0 }")
+    Planeta findByIdName(String nome);
 }
