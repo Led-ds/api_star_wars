@@ -2,7 +2,6 @@ package com.api.starwars.controller;
 
 import javax.validation.Valid;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -42,7 +41,7 @@ public class PlanetaController {
         return new ResponseEntity<Planeta>(response, HttpStatus.CREATED);
     }
 	
-	@RequestMapping(method=RequestMethod.GET, value="/buscarPlaneta/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method=RequestMethod.GET, value="/buscarPlanetaPorId/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Planeta> buscarPorId(@PathVariable String id){
 
 		Planeta target = service.getPlantePorId(id);
@@ -54,7 +53,7 @@ public class PlanetaController {
 		return new ResponseEntity<Planeta>(target, HttpStatus.OK);
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/buscarPlaneta/{nome}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method=RequestMethod.GET, value="/buscarPlanetaPorNome/{nome}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Planeta> buscarPorNome(@PathVariable String nome){
 
 		Planeta target = service.getPlantePorNome(nome);

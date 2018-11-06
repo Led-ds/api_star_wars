@@ -3,14 +3,13 @@ package com.api.starwars.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.api.starwars.model.Planeta;
 import com.api.starwars.repository.PlanetaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 
 @Service("planetaService")
 @Transactional

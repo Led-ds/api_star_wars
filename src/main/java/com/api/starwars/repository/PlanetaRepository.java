@@ -1,9 +1,5 @@
 package com.api.starwars.repository;
 
-import java.util.List;
-
-import org.bson.types.ObjectId;
-
 import com.api.starwars.model.Planeta;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
