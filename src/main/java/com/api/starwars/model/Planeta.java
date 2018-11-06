@@ -3,10 +3,8 @@ package com.api.starwars.model;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @SuppressWarnings("serial")
-@Document(collection = "planeta")
 public class Planeta implements Serializable{
 
 	@Id

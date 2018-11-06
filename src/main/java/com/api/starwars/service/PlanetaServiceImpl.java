@@ -3,6 +3,7 @@ package com.api.starwars.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.api.starwars.common.util.ExternalRequestHttp;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.api.starwars.model.Planeta;
@@ -19,8 +20,18 @@ public class PlanetaServiceImpl implements PlanetaService {
 	private PlanetaRepository repository;
 
 	
-	public Planeta adicionar(Planeta planeta) {
-		return repository.insert(planeta);
+	public Planeta adicionar(Planeta planeta) throws Exception {
+
+		Planeta newPlaneta = repository.insert(planeta);
+
+		if(newPlaneta != null){
+			ExternalRequestHttp restExternal = new ExternalRequestHttp();
+			String response = restExternal.getRequestSWApi();
+
+			System.out.println(response);
+		}
+
+		return planeta;
 	}
 
 	public List<Planeta> listarTodosPlanetas() {

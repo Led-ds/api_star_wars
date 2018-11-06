@@ -5,7 +5,7 @@ import com.api.starwars.model.Planeta;
 
 public interface PlanetaService {
 
-	public Planeta adicionar(Planeta planeta);
+	public Planeta adicionar(Planeta planeta) throws Exception;
 	
 	public List<Planeta> listarTodosPlanetas();
 	

@@ -8,11 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.api.starwars.model.Planeta;
 import com.api.starwars.service.PlanetaService;
@@ -28,20 +24,21 @@ public class PlanetaController {
 		this.service = prPlanetaService;
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/add)", 
-						headers ="content-type=application/x-www-form-urlencoded", 
-							produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Planeta> adicionarPlaneta(@ModelAttribute @Valid Planeta planeta, BindingResult errors, Model model) {
-		if (errors.hasErrors()) {
-            return new ResponseEntity<Planeta>(new Planeta(), HttpStatus.CONFLICT);
-        }
-        
-        Planeta response = service.adicionar(planeta);
-        
-        return new ResponseEntity<Planeta>(response, HttpStatus.CREATED);
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ResponseEntity<Planeta> adicionarPlaneta(@RequestBody @Valid Planeta planeta) {
+
+		Planeta response = null;
+		try {
+			response = service.adicionar(planeta);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return new ResponseEntity<Planeta>(response, HttpStatus.CREATED);
     }
 	
-	@RequestMapping(method=RequestMethod.GET, value="/buscarPlanetaPorId/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/buscarPlanetaPorId/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Planeta> buscarPorId(@PathVariable String id){
 
 		Planeta target = service.getPlantePorId(id);
@@ -53,7 +50,7 @@ public class PlanetaController {
 		return new ResponseEntity<Planeta>(target, HttpStatus.OK);
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/buscarPlanetaPorNome/{nome}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/buscarPlanetaPorNome/{nome}", method = RequestMethod.GET)
 	public ResponseEntity<Planeta> buscarPorNome(@PathVariable String nome){
 
 		Planeta target = service.getPlantePorNome(nome);
