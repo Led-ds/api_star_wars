@@ -1,7 +1,5 @@
 package com.api.starwars.common.util;
 
-import org.springframework.stereotype.Service;
-
 import java.io.BufferedReader;
 import java.io.*;
 import java.net.HttpURLConnection;
