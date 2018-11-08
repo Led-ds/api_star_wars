@@ -1,6 +1,6 @@
 package com.api.starwars;
 
-import com.api.starwars.common.util.ExternalRequestHttp;
+import com.api.starwars.common.util.CallHttpRest;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

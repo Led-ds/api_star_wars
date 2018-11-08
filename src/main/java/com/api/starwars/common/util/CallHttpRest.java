@@ -5,7 +5,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ExternalRequestHttp {
+public class CallHttpRest {
 
     public String getRequestSWApi()  throws Exception {
         StringBuilder result = new StringBuilder();

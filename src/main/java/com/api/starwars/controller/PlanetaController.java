@@ -34,7 +34,6 @@ public class PlanetaController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return new ResponseEntity<Planeta>(response, HttpStatus.CREATED);
     }
 	
