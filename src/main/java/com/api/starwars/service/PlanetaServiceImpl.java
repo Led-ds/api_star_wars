@@ -64,11 +64,9 @@ public class PlanetaServiceImpl implements PlanetaService {
 		return repository.findAll();
 	}
 
-	public Planeta getPlantePorId(String _id) {
-		ObjectId id = new ObjectId(_id.getBytes());
-		Optional<Planeta> optional = repository.findById(new ObjectId(_id).toString());
-		
-		return optional==null?null:(Planeta) optional.get();
+	public Planeta getPlantePorId(ObjectId _id) {
+		Planeta planeta = repository.findById(_id);
+		return planeta;
 	}
 
 	@Override

@@ -2,13 +2,15 @@ package com.api.starwars.model;
 
 import java.io.Serializable;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 @SuppressWarnings("serial")
 public class Planeta implements Serializable{
 
 	@Id
-	private String id;
+	private ObjectId id;
+	
 	private String nome;
 	private String clima;
 	private String terreno;
@@ -22,11 +24,10 @@ public class Planeta implements Serializable{
 		this.terreno = prTerreno;
 		this.qtdAparicao = prQtdAparicao;
 	}
-
-	public String getId() {
+	public ObjectId getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 	public String getNome() {
